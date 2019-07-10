@@ -117,7 +117,7 @@ function initMap() {
 					}
 				});
 
-				gtag("event", "click", { "event_category": "dropdown", "event_label": place.name });
+				gtag("event", "click", { "event_category": "marker", "event_label": place.name });
 			});
 
 			places[place.type][place.name] = place;

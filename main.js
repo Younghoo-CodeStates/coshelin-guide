@@ -70,6 +70,7 @@ function initMap() {
 
 			var contentString  = '<div class="card" style="width:20rem; border:none;">';
 				contentString += 	'<h5 class="card-title mt-2 mb-0 ml-1"><span class="badge badge-secondary">' + place.type + '</span> ' + place.name + '</h5>';
+				contentString += 	'<a class="mb-1" style="text-align:right;"></a>';
 				// contentString += 	'<a class="mb-1" style="text-align:right;" target="_blank" href="' + place.edit + '">수정</a>';
 				contentString += place.imageId ? 
 									'<img class="card-img-top" src="https://drive.google.com/a/codestates.com/thumbnail?id=' + place.imageId + '">' : '';
@@ -115,12 +116,14 @@ function initMap() {
 						this.page.url = 'https://younghoo-codestates.github.io/coshelin-guide#!' + place.name;
 					}
 				});
+
+				gtag("event", "click", { "event_category": "dropdown", "event_label": place.name });
 			});
 
 			places[place.type][place.name] = place;
 
 			var anchor = $(
-				'<li><a class="dropdown-item" href="#">' +
+				'<li><a class="dropdown-item" href="#" onclick="gtag("event", "click", { "event_category": "dropdown", "event_label": "' + place.name + '" });">' +
 					'<img style="width:12px;" class="mr-1" src="' + icons[place.type].icon + '">' +
 					'<small>' + place.name + '</small>' + 
 				'</a></li>'
